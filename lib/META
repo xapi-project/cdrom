@@ -1,0 +1,11 @@
+# OASIS_START
+# DO NOT EDIT (digest: 928c91155cf79949d272b2b738d73ca7)
+version = "0.1"
+description = "CDROM device misc bindings"
+archive(byte) = "cdrom.cma"
+archive(byte, plugin) = "cdrom.cma"
+archive(native) = "cdrom.cmxa"
+archive(native, plugin) = "cdrom.cmxs"
+exists_if = "cdrom.cma"
+# OASIS_STOP
+
