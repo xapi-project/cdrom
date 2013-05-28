@@ -1,38 +1,23 @@
-# OASIS_START
-# DO NOT EDIT (digest: bc1e05bfc8b39b664f29dae8dbd3ebbb)
+OBUILDOPTS=--debug+
+#CONFOPTS=--enable-library-bytecode --enable-executable-bytecode
+PKGNAME=cdrom
 
-SETUP = ocaml setup.ml
+.PHONY: configure build install clean uninstall
 
-build: setup.data
-	$(SETUP) -build $(BUILDFLAGS)
+all: build
 
-doc: setup.data build
-	$(SETUP) -doc $(DOCFLAGS)
+configure:
+	obuild $(OBUILDOPTS) configure $(CONFOPTS)
 
-test: setup.data build
-	$(SETUP) -test $(TESTFLAGS)
+build: configure
+	obuild $(OBUILDOPTS) build
 
-all: 
-	$(SETUP) -all $(ALLFLAGS)
+install: build
+	ocamlfind remove $(PKGNAME)
+	ocamlfind install $(PKGNAME) dist/build/lib-$(PKGNAME)/*.{a,so,cma,cmxa,cmi} lib/META lib/$(PKGNAME).mli
 
-install: setup.data
-	$(SETUP) -install $(INSTALLFLAGS)
+clean:
+	obuild clean
 
-uninstall: setup.data
-	$(SETUP) -uninstall $(UNINSTALLFLAGS)
-
-reinstall: setup.data
-	$(SETUP) -reinstall $(REINSTALLFLAGS)
-
-clean: 
-	$(SETUP) -clean $(CLEANFLAGS)
-
-distclean: 
-	$(SETUP) -distclean $(DISTCLEANFLAGS)
-
-setup.data:
-	$(SETUP) -configure $(CONFIGUREFLAGS)
-
-.PHONY: build doc test all install uninstall reinstall clean distclean configure
-
-# OASIS_STOP
+uninstall:
+	ocamlfind remove $(PKGNAME)
