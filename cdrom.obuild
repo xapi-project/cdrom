@@ -1,0 +1,17 @@
+name: cdrom 
+version: 0.9.1
+synopsis: Query Linux CDROM devices
+obuild-ver: 1
+
+library cdrom
+  src-dir: lib
+  modules: Cdrom
+  cdir: lib
+  c-sources: cdrom_stubs.c
+  build-deps: unix
+
+executable query
+  main: query.ml
+  src-dir: query
+  build-deps: cdrom
+
