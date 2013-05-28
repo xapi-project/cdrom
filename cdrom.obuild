@@ -1,5 +1,5 @@
 name: cdrom 
-version: 0.9.0
+version: 0.9.1
 synopsis: Query Linux CDROM devices
 obuild-ver: 1
 
