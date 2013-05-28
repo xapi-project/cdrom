@@ -2,6 +2,10 @@ OBUILDOPTS=--debug+
 #CONFOPTS=--enable-library-bytecode --enable-executable-bytecode
 PKGNAME=cdrom
 
+ifneq "$(DESTDIR)" ""
+INSTALL_ARGS := -destdir $(DESTDIR)
+endif
+
 .PHONY: configure build install clean uninstall
 
 all: build
@@ -14,7 +18,7 @@ build: configure
 
 install: build
 	ocamlfind remove $(PKGNAME)
-	ocamlfind install $(PKGNAME) dist/build/lib-$(PKGNAME)/*.{a,so,cma,cmxa,cmi} lib/META lib/$(PKGNAME).mli
+	ocamlfind install $(PKGNAME) dist/build/lib-$(PKGNAME)/*.{a,so,cma,cmxa,cmi} lib/META lib/$(PKGNAME).mli $(INSTALL_ARGS)
 
 clean:
 	obuild clean
