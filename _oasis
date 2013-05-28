@@ -1,6 +1,6 @@
 OASISFormat:  0.3
 Name:         cdrom
-Version:      0.1
+Version:      0.9.0
 Synopsis:     CDROM device misc bindings
 License:      LGPL-2.1 with OCaml linking exception
 Authors:      various
