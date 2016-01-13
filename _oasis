@@ -1,6 +1,6 @@
 OASISFormat:    0.4
 Name:           cdrom
-Version:        0.9.1
+Version:        0.9.2
 Synopsis:       Query Linux CDROM devices
 Authors:        David Scott
 License:        LGPL-2.1 with OCaml linking exception
