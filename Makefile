@@ -1,31 +1,41 @@
-OBUILDOPTS=--debug+
-#CONFOPTS=--enable-library-bytecode --enable-executable-bytecode
-PKGNAME=cdrom
+# OASIS_START
+# DO NOT EDIT (digest: a3c674b4239234cbbe53afe090018954)
 
-SUFFIXES:=cdrom.a cdrom.cmi cdrom.cmx cdrom.o dllstubs_cdrom.so \
-       cdrom.cma  cdrom.cmo  cdrom.cmxa  cdrom_stubs.c.o  libstubs_cdrom.a
-FILES:=$(addprefix dist/build/lib-$(PKGNAME)/,$(SUFFIXES))
+SETUP = ocaml setup.ml
 
-ifneq "$(DESTDIR)" ""
-INSTALL_ARGS := -destdir $(DESTDIR)
-endif
+build: setup.data
+	$(SETUP) -build $(BUILDFLAGS)
 
-.PHONY: configure build install clean uninstall
+doc: setup.data build
+	$(SETUP) -doc $(DOCFLAGS)
 
-all: build
+test: setup.data build
+	$(SETUP) -test $(TESTFLAGS)
 
-configure:
-	obuild $(OBUILDOPTS) configure $(CONFOPTS)
+all:
+	$(SETUP) -all $(ALLFLAGS)
 
-build: configure
-	obuild $(OBUILDOPTS) build
+install: setup.data
+	$(SETUP) -install $(INSTALLFLAGS)
 
-install: build
-	ocamlfind remove $(PKGNAME)
-	ocamlfind install $(PKGNAME) $(FILES) lib/META lib/$(PKGNAME).mli $(INSTALL_ARGS)
+uninstall: setup.data
+	$(SETUP) -uninstall $(UNINSTALLFLAGS)
+
+reinstall: setup.data
+	$(SETUP) -reinstall $(REINSTALLFLAGS)
 
 clean:
-	obuild clean
+	$(SETUP) -clean $(CLEANFLAGS)
 
-uninstall:
-	ocamlfind remove $(PKGNAME)
+distclean:
+	$(SETUP) -distclean $(DISTCLEANFLAGS)
+
+setup.data:
+	$(SETUP) -configure $(CONFIGUREFLAGS)
+
+configure:
+	$(SETUP) -configure $(CONFIGUREFLAGS)
+
+.PHONY: build doc test all install uninstall reinstall clean distclean configure
+
+# OASIS_STOP

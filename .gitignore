@@ -1,1 +1,10 @@
-dist/
+META
+_tags
+*.mldylib
+*.mllib
+myocamlbuild.ml
+setup.data
+setup.log
+_build/
+*.native
+*.clib
