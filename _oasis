@@ -16,7 +16,7 @@ Library cdrom
   NativeOpt:        -warn-error +1..45
   BuildDepends:     unix
 
-Executable query
+Executable "query-cdrom"
   Path:             query
   MainIs:           query.ml
   CompiledObject:   best
