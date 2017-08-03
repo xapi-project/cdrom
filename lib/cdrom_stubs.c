@@ -44,7 +44,6 @@ CAMLprim value stub_##X (value fd)                                              
 	CAMLparam1 (fd);                                                                \
 	int result = -1;                                                                \
 	int i;                                                                          \
-	int ok = 0;                                                                     \
 	int c_fd = Int_val(fd);                                                         \
 	int c_res = ioctl(c_fd, X);                                                     \
                                                                                         \
@@ -53,7 +52,6 @@ CAMLprim value stub_##X (value fd)                                              
 	for (i = 0; i < sizeof(X##_list); i++){                                         \
 		if (X##_list[i] == c_res){                                              \
 			result = i;                                                     \
-			ok = 1;                                                         \
 			break;                                                          \
 		}                                                                       \
 	}                                                                               \
