@@ -12,23 +12,23 @@
  * GNU Lesser General Public License for more details.
  *)
 type cdrom_drive_status =
-	| NO_INFO
-	| NO_DISC
-	| TRAY_OPEN
-	| DRIVE_NOT_READY
-	| DISC_OK
+  | NO_INFO
+  | NO_DISC
+  | TRAY_OPEN
+  | DRIVE_NOT_READY
+  | DISC_OK
 
 val string_of_cdrom_drive_status : cdrom_drive_status -> string
 
 type cdrom_disc_status =
-	| DISC_NO_INFO
-	| DISC_NO_DISC
-	| AUDIO
-	| DATA_1
-	| DATA_2
-	| XA_2_1
-	| XA_2_2
-	| MIXED
+  | DISC_NO_INFO
+  | DISC_NO_DISC
+  | AUDIO
+  | DATA_1
+  | DATA_2
+  | XA_2_1
+  | XA_2_2
+  | MIXED
 
 val string_of_cdrom_disc_status : cdrom_disc_status -> string
 
